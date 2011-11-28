@@ -92,7 +92,7 @@ install -pm644 libdwarf/libdwarf.h	-D %{buildroot}%{_includedir}/libdwarf/libdwa
 install -pm755 dwarfdump2/dwarfdump	-D %{buildroot}%{_bindir}/dwarfdump
 
 %files -n	%{libname}
-%doc libdwarf/ChangeLog libdwarf/README libdwarf/COPYING libdwarf/LIBDWARFCOPYRIGHT libdwarf/LGPL.txt
+%doc libdwarf/ChangeLog libdwarf/README libdwarf/COPYING libdwarf/LIBDWARFCOPYRIGHT
 %{_libdir}/libdwarf.so.0*
 
 %files -n	%{devname}
