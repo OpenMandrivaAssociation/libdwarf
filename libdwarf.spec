@@ -105,6 +105,6 @@ install -pm755 dwarfdump2/dwarfdump	-D %{buildroot}%{_bindir}/dwarfdump
 %{_libdir}/libdwarf.a
 
 %files		tools
-%doc dwarfdump2/README dwarfdump2/ChangeLog dwarfdump2/COPYING dwarfdump2/DWARFDUMPCOPYRIGHT dwarfdump2/GPL.txt
+%doc dwarfdump2/README dwarfdump2/ChangeLog dwarfdump2/COPYING dwarfdump2/DWARFDUMPCOPYRIGHT
 %{_bindir}/dwarfdump
 
