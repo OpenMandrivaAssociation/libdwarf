@@ -49,7 +49,7 @@ Provides:	dwarf-static-devel = %{EVRD}
 %description -n	%{static}
 Static libdwarf library.
 
-%package	tools
+%package -n	dwarf-tools
 Summary:	Tools for accessing DWARF debugging information
 License:	GPLv2
 Group:		Development/Tools
@@ -105,7 +105,6 @@ install -pm755 dwarfdump2/dwarfdump	-D %{buildroot}%{_bindir}/dwarfdump
 %files -n	%{static}
 %{_libdir}/libdwarf.a
 
-%files		tools
+%files	-n	dwarf-tools
 %doc dwarfdump2/README dwarfdump2/ChangeLog dwarfdump2/COPYING dwarfdump2/DWARFDUMPCOPYRIGHT
 %{_bindir}/dwarfdump
-
