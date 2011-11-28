@@ -77,7 +77,7 @@ popd
 
 pushd dwarfdump2
 %configure2_5x
-LD_LIBRARY_PATH="../libdwarf" %make
+LD_LIBRARY_PATH="../libdwarf" make
 popd
 
 %install
