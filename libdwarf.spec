@@ -35,6 +35,7 @@ and Fortran.  Please see http://www.dwarfstd.org for DWARF specification.
 Summary:	Library and header files of libdwarf
 Group:		Development/C
 Requires:	%{libname} = %{EVRD}
+Provides:	dwarf-devel = %{EVRD}
 
 %description -n	%{devname}
 Development package containing library and header files of libdwarf.
@@ -43,6 +44,7 @@ Development package containing library and header files of libdwarf.
 Summary:	Static libdwarf library
 Group:		Development/C
 Requires:	%{devname} = %{EVRD}
+Provides:	dwarf-static-devel = %{EVRD}
 
 %description -n	%{static}
 Static libdwarf library.
