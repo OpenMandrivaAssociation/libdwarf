@@ -57,31 +57,29 @@ to access DWARF debug information.
 
 %prep
 %setup -q -n dwarf-%{reldate}
-%patch0 -p0 -b .soname-fix
+%patch0 -p1 -b .soname-fix~
 
 %build
 pushd libdwarf
-%configure --enable-shared
-%make libdwarf.so.0.0 libdwarf.a 
-ln -s libdwarf.so.0.0 libdwarf.so
-ln -s libdwarf.so.0.0 libdwarf.so.0
+%configure2_5x --enable-shared
+%make
 popd
 
 # Need to also configure dwarfdump since dwarfdump2 Makefile 
 # depends on dwarfdump's Makefile
 pushd dwarfdump
-%configure 
+%configure2_5x
 popd
 
 pushd dwarfdump2
-%configure 
+%configure2_5x
 LD_LIBRARY_PATH="../libdwarf" %make
 popd
 
 %install
-install -pm755 libdwarf/libdwarf.so.0.0 -D %{buildroot}%{_libdir}/libdwarf.so.%{major}.0
-ln -s libdwarf.so.%{major}.0		   %{buildroot}%{_libdir}/libdwarf.so.%{major}
-ln -s libdwarf.so.%{major}		   %{buildroot}%{_libdir}/libdwarf.so
+install -pm755 libdwarf/libdwarf.so.%{major}.0 -D %{buildroot}%{_libdir}/libdwarf.so.%{major}.0
+cp -pd libdwarf/libdwarf.so.%{major}	   %{buildroot}%{_libdir}/libdwarf.so.%{major}
+cp -pd libdwarf/libdwarf.so.%{major}	   %{buildroot}%{_libdir}/libdwarf.so
 
 install -pm644 libdwarf/libdwarf.a	-D %{buildroot}%{_libdir}/libdwarf.a
 install -pm644 libdwarf/dwarf.h		-D %{buildroot}%{_includedir}/libdwarf/dwarf.h
