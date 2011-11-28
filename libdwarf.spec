@@ -75,8 +75,7 @@ popd
 
 pushd dwarfdump2
 %configure 
-# Note: %{?_smp_mflags} failed to build
-LD_LIBRARY_PATH="../libdwarf" make all
+LD_LIBRARY_PATH="../libdwarf" %make
 popd
 
 %install
