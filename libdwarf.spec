@@ -62,7 +62,7 @@ to access DWARF debug information.
 %build
 pushd libdwarf
 %configure --enable-shared
-%make CFLAGS="%{optflags} -I. -fPIC" libdwarf.so.0.0 libdwarf.a 
+%make libdwarf.so.0.0 libdwarf.a 
 ln -s libdwarf.so.0.0 libdwarf.so
 ln -s libdwarf.so.0.0 libdwarf.so.0
 popd
@@ -76,7 +76,7 @@ popd
 pushd dwarfdump2
 %configure 
 # Note: %{?_smp_mflags} failed to build
-LD_LIBRARY_PATH="../libdwarf" make CFLAGS="%{optflags} -I. -fPIC" all
+LD_LIBRARY_PATH="../libdwarf" make all
 popd
 
 %install
