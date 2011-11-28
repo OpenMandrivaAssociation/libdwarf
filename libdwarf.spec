@@ -14,6 +14,7 @@ URL:		http://reality.sgiweb.org/davea/dwarf.html
 Source0:	http://reality.sgiweb.org/davea/%{name}-%{reldate}.tar.gz
 # This patch set up the proper soname
 Patch0:		libdwarf-soname-fix.patch
+Patch1:		dwarf-20111030-link-against-required-libelf.patch
 BuildRequires:	binutils-devel elfutils-devel
 
 %description
@@ -58,6 +59,7 @@ to access DWARF debug information.
 %prep
 %setup -q -n dwarf-%{reldate}
 %patch0 -p1 -b .soname-fix~
+%patch1 -p1 -b .libelf~
 
 %build
 pushd libdwarf
