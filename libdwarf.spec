@@ -54,7 +54,7 @@ Summary:	Tools for accessing DWARF debugging information
 License:	GPLv2
 Group:		Development/Tools
 
-%description	tools
+%description -n	dwarf-tools
 C++ version of dwarfdump (dwarfdump2) command-line utilities 
 to access DWARF debug information.
 
