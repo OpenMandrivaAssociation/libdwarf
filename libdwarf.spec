@@ -62,6 +62,7 @@ to access DWARF debug information.
 %setup -q -n dwarf-%{reldate}
 %patch0 -p1 -b .soname-fix~
 %patch1 -p1 -b .libelf~
+find |xargs chmod o+r
 
 %build
 pushd libdwarf
