@@ -1,4 +1,4 @@
-%define reldate	20111030
+%define reldate	20111214
 %define	major	0
 %define	libname	%mklibname dwarf 0
 %define	devname	%mklibname -d dwarf
