@@ -2,7 +2,6 @@
 %define	major	0
 %define	libname	%mklibname dwarf 0
 %define	devname	%mklibname -d dwarf
-%define	static	%mklibname -d -s dwarf
 
 Summary:	Library to access the DWARF Debugging file format 
 Name:		libdwarf
@@ -40,15 +39,6 @@ Provides:	dwarf-devel = %{EVRD}
 %description -n	%{devname}
 Development package containing library and header files of libdwarf.
 
-%package -n	%{static}
-Summary:	Static libdwarf library
-Group:		Development/C
-Requires:	%{devname} = %{EVRD}
-Provides:	dwarf-static-devel = %{EVRD}
-
-%description -n	%{static}
-Static libdwarf library.
-
 %package -n	dwarf-tools
 Summary:	Tools for accessing DWARF debugging information
 License:	GPLv2
@@ -66,7 +56,8 @@ find |xargs chmod o+r
 
 %build
 pushd libdwarf
-%configure2_5x --enable-shared
+%configure2_5x	--enable-shared \
+		--disable-nonshared
 %make
 popd
 
@@ -86,7 +77,6 @@ install -pm755 libdwarf/libdwarf.so.%{major}.0 -D %{buildroot}%{_libdir}/libdwar
 cp -pd libdwarf/libdwarf.so.%{major}	   %{buildroot}%{_libdir}/libdwarf.so.%{major}
 cp -pd libdwarf/libdwarf.so.%{major}	   %{buildroot}%{_libdir}/libdwarf.so
 
-install -pm644 libdwarf/libdwarf.a	-D %{buildroot}%{_libdir}/libdwarf.a
 install -pm644 libdwarf/dwarf.h		-D %{buildroot}%{_includedir}/libdwarf/dwarf.h
 install -pm644 libdwarf/libdwarf.h	-D %{buildroot}%{_includedir}/libdwarf/libdwarf.h
 
@@ -102,9 +92,6 @@ install -pm755 dwarfdump2/dwarfdump	-D %{buildroot}%{_bindir}/dwarfdump
 %{_includedir}/libdwarf/dwarf.h
 %{_includedir}/libdwarf/libdwarf.h
 %{_libdir}/libdwarf.so
-
-%files -n	%{static}
-%{_libdir}/libdwarf.a
 
 %files	-n	dwarf-tools
 %doc dwarfdump2/README dwarfdump2/ChangeLog dwarfdump2/COPYING dwarfdump2/DWARFDUMPCOPYRIGHT
