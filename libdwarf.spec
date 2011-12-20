@@ -52,7 +52,7 @@ Static libdwarf library.
 %package -n	dwarf-tools
 Summary:	Tools for accessing DWARF debugging information
 License:	GPLv2
-Group:		Development/Tools
+Group:		Development/Other
 
 %description -n	dwarf-tools
 C++ version of dwarfdump (dwarfdump2) command-line utilities 
