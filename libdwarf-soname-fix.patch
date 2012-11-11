@@ -1,0 +1,13 @@
+--- dwarf-20111030/libdwarf/Makefile.in.soname-fix	2011-10-30 20:58:19.000000000 +0100
++++ dwarf-20111030/libdwarf/Makefile.in	2011-11-28 19:43:24.064454704 +0100
+@@ -132,7 +132,9 @@ libdwarf.a: dwarf_names.h dwarf_names.c
+ 	$(AR) $(ARFLAGS) $@ $(OBJS)  dwarf_names.o
+ 
+ libdwarf.so: dwarf_names.h dwarf_names.c $(OBJS) dwarf_names.o
+-	$(CC) $(CFLAGS) -shared $(OBJS)  dwarf_names.o -o $@
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared $(OBJS) -Wl,--export-dynamic -Wl,-soname,libdwarf.so.0 dwarf_names.o -o libdwarf.so.0.0
++	ln -sf libdwarf.so.0.0 libdwarf.so.0
++	ln -sf libdwarf.so.0 libdwarf.so
+ 
+ none:
+ 	echo "do nothing"

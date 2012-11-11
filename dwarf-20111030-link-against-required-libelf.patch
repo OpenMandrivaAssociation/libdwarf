@@ -1,0 +1,11 @@
+--- dwarf-20111030/libdwarf/Makefile.in.libelf~	2011-11-28 20:00:14.755421027 +0100
++++ dwarf-20111030/libdwarf/Makefile.in	2011-11-28 20:00:17.328429488 +0100
+@@ -132,7 +132,7 @@ libdwarf.a: dwarf_names.h dwarf_names.c
+ 	$(AR) $(ARFLAGS) $@ $(OBJS)  dwarf_names.o
+ 
+ libdwarf.so: dwarf_names.h dwarf_names.c $(OBJS) dwarf_names.o
+-	$(CC) $(CFLAGS) $(LDFLAGS) -shared $(OBJS) -Wl,--export-dynamic -Wl,-soname,libdwarf.so.0 dwarf_names.o -o libdwarf.so.0.0
++	$(CC) $(CFLAGS) $(LDFLAGS) -shared $(OBJS) -lelf -Wl,--export-dynamic -Wl,-soname,libdwarf.so.0 dwarf_names.o -o libdwarf.so.0.0
+ 	ln -sf libdwarf.so.0.0 libdwarf.so.0
+ 	ln -sf libdwarf.so.0 libdwarf.so
+ 
