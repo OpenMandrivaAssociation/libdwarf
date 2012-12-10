@@ -109,3 +109,64 @@ install -pm755 dwarfdump2/dwarfdump	-D %{buildroot}%{_bindir}/dwarfdump
 %files	-n	dwarf-tools
 %doc dwarfdump2/README dwarfdump2/ChangeLog dwarfdump2/COPYING dwarfdump2/DWARFDUMPCOPYRIGHT
 %{_bindir}/dwarfdump
+
+
+%changelog
+* Tue Dec 20 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.20111214-1
++ Revision: 743929
+- fix group
+- new version
+- make all files world readable
+- parallel build for dwarfdump2 turned out to not be reliable after all...
+- drop LGPL.txt as well as it's provided by 'common-licenses'
+- rename libdwarf-tools package to dwarf-tools
+- add canonical provides for devel packages
+- be sure to link against libelf (P1)
+- improve soname patch
+- parallel build for dwarfdump2 seems to be working again..
+- don't have to pass CFLAGS manually, it's already done by configure
+- drop GPL.txt as the license is provided by 'common-licenses'
+- imported package libdwarf
+
+
+* Mon Nov 28 2011 Per Øyvind Karlsen <peroyvind@mandriva.org> 0.20111030-1
+- 20111030 release adapted from Fedora package
+
+* Wed Jul 13 2011 Parag Nemade <paragn AT fedoraproject DOT org> - 0.20110612-1
+- Update to 20110612 release
+
+* Wed Mar 09 2011 Parag Nemade <paragn AT fedoraproject DOT org> - 0.20110113-1
+- Update to 20110113 release
+
+* Mon Feb 07 2011 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20100629-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_15_Mass_Rebuild
+
+* Tue Jul 06 2010 Parag Nemade <paragn AT fedoraproject.org> - 0.20100629-1
+- Update to 20100629 release
+- Add -static subpackage as request in rh#586807
+
+* Fri Jul 24 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.20090324-5
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
+
+* Tue Mar 31 2009 - Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>
+- 0.20090324-4
+- Adding _smp_mflags for libdwarf build
+- Move CFLAGS override from configure to make
+ 
+* Mon Mar 30 2009 - Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>
+- 0.20090324-3
+- Remove AutoreqProv no
+
+* Thu Mar 26 2009 - Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>
+- 0.20090324-2
+- Drop the C implementation of dwarfdump. (dwarfdump1)
+- Since the doc package is small, we combined the contents into the devel package.
+- Fix the version string.
+- Drop the static library.
+- Add release number to "Requires".
+- Fix licensing (v2 instead of v2+)
+- Change linking for libdwarf.so and libdwarf.so.0
+
+* Wed Mar 25 2009 - Suravee Suthikulpanit <suravee.suthikulpanit@amd.com>
+- 20090324-1
+- Initial Revision
