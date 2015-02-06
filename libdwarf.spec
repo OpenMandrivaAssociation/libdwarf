@@ -7,7 +7,7 @@
 Summary:	Library to access the DWARF Debugging file format 
 Name:		libdwarf
 Version:	0.%{reldate}
-Release:	1
+Release:	2
 License:	LGPLv2
 Group:		System/Libraries
 URL:		http://reality.sgiweb.org/davea/dwarf.html
