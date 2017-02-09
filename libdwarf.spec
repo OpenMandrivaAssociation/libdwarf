@@ -1,49 +1,48 @@
 %global major 0
-%define libname %mklibname dwarf %major
+%define libname %mklibname dwarf %{major}
 %define devname %mklibname -d dwarf
 %define soversion %{major}
 %define soname libdwarf.so.%{soversion}
 %define sofullname libdwarf.so.%{soversion}.%{version}.0
 
-Name:          libdwarf
-Version:       20160507
-Release:       1
-Summary:       Library to access the DWARF Debugging file format
-Group:         Development/C
+Name:		libdwarf
+Version:	20160507
+Release:	1
+Summary:	Library to access the DWARF Debugging file format
+Group:		Development/C
+License:	LGPLv2
+URL:		http://www.prevanders.net/dwarf.html
+Source0:	http://www.prevanders.net/%{name}-%{version}.tar.gz
+BuildRequires:	binutils-devel
+BuildRequires:	elfutils-devel
 
-License:       LGPLv2
-URL:           http://www.prevanders.net/dwarf.html
-Source0:       http://www.prevanders.net/%{name}-%{version}.tar.gz
+%package -n %{libname}
+Summary:	Library files of libdwarf
+Group:		System/Libraries
 
-BuildRequires: binutils-devel elfutils-devel
-
-%package -n %libname
-Summary: Library files of libdwarf
-Group: System/Libraries
-
-%description -n %libname
+%description -n %{libname}
 Library to access the DWARF debugging file format which supports
 source level debugging of a number of procedural languages, such as C, C++,
 and Fortran.  Please see http://www.dwarfstd.org for DWARF specification.
 
-%package -n %devname
-Summary:       Library and header files of libdwarf
-Group:         Development/C
-License:       LGPLv2
-Requires:      %{libname} = %{version}-%{release}
-Provides:      %{name}-devel = %{version}-%{release}
+%package -n %{devname}
+Summary:	Library and header files of libdwarf
+Group:		Development/C
+License:	LGPLv2
+Requires:	%{libname} = %{version}-%{release}
+Provides:	%{name}-devel = %{version}-%{release}
 
 %package static
-Summary:       Static libdwarf library
-Group:         Development/C
-License:       LGPLv2
-Requires:      %{name}-devel = %{version}-%{release}
+Summary:	Static libdwarf library
+Group:		Development/C
+License:	LGPLv2
+Requires:	%{name}-devel = %{version}-%{release}
 
 %package tools
-Summary:       Tools for accessing DWARF debugging information
-Group:         Development/Tools
-License:       GPLv2
-Requires:      %{libname} = %{version}-%{release}
+Summary:	Tools for accessing DWARF debugging information
+Group:		Development/Tools
+License:	GPLv2
+Requires:	%{libname} = %{version}-%{release}
 
 %description
 Library to access the DWARF debugging file format which supports
@@ -53,7 +52,7 @@ and Fortran.  Please see http://www.dwarfstd.org for DWARF specification.
 %description static
 Static libdwarf library.
 
-%description -n %devname
+%description -n %{devname}
 Development package containing library and header files of libdwarf.
 
 %description tools
@@ -69,25 +68,22 @@ to access DWARF debug information.
 LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
-install -pDm 0644 libdwarf/dwarf.h         %{buildroot}%{_includedir}/libdwarf/dwarf.h
-install -pDm 0644 libdwarf/libdwarf.a      %{buildroot}%{_libdir}/libdwarf.a
+install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
+install -pDm 0644 libdwarf/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
+install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
+install -pDm 0755 libdwarf/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
+ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
+ln -s %{sofullname} %{buildroot}%{_libdir}/libdwarf.so
+install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
 
-install -pDm 0644 libdwarf/libdwarf.h      %{buildroot}%{_includedir}/libdwarf/libdwarf.h
-install -pDm 0755 libdwarf/libdwarf.so     %{buildroot}%{_libdir}/%{sofullname}
-ln      -s        %{sofullname}            %{buildroot}%{_libdir}/%{soname}
-ln      -s        %{sofullname}            %{buildroot}%{_libdir}/libdwarf.so
-install -pDm 0755 dwarfdump/dwarfdump      %{buildroot}%{_bindir}/dwarfdump
-
-
-
-%files -n %libname
+%files -n %{libname}
 %{_libdir}/libdwarf.so.%{major}
 %{_libdir}/libdwarf.so.%{major}.*
 
 %files static
 %{_libdir}/libdwarf.a
 
-%files -n %devname
+%files -n %{devname}
 %doc libdwarf/*.pdf
 %doc dwarfdump/README dwarfdump/ChangeLog
 %doc dwarfdump/COPYING dwarfdump/DWARFDUMPCOPYRIGHT dwarfdump/GPL.txt
