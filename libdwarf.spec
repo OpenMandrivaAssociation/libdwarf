@@ -6,7 +6,7 @@
 %define sofullname libdwarf.so.%{soversion}.%{version}.0
 
 Name:		libdwarf
-Version:	20160507
+Version:	20170709
 Release:	1
 Summary:	Library to access the DWARF Debugging file format
 Group:		Development/C
