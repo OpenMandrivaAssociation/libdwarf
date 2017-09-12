@@ -5,6 +5,7 @@
 %define soname libdwarf.so.%{soversion}
 %define sofullname libdwarf.so.%{soversion}.%{version}.0
 %define _disable_lto 1
+%define _disable_ld_no_undefined 1
 
 Name:		libdwarf
 Version:	20170709
