@@ -62,7 +62,7 @@ C++ version of dwarfdump (dwarfdump2) command-line utilities
 to access DWARF debug information.
 
 %prep
-%setup -qn dwarf-%{version}
+%setup -qn %{name}-%{version}
 %apply_patches
 
 %build
