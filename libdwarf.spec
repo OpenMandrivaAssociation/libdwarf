@@ -1,4 +1,4 @@
-%global major 0
+%global major 1
 %define libname %mklibname dwarf %{major}
 %define devname %mklibname -d dwarf
 %define soversion %{major}
@@ -8,8 +8,8 @@
 %define _disable_ld_no_undefined 1
 
 Name:		libdwarf
-Version:	20170709
-Release:	2
+Version:	20190110
+Release:	1
 Summary:	Library to access the DWARF Debugging file format
 Group:		Development/C
 License:	LGPLv2
@@ -62,18 +62,18 @@ C++ version of dwarfdump (dwarfdump2) command-line utilities
 to access DWARF debug information.
 
 %prep
-%setup -qn dwarf-%{version}
+%setup -qn %{name}-%{version}
 %apply_patches
 
 %build
-%configure --enable-shared
+%configure --enable-shared --enable-static
 LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
 install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
-install -pDm 0644 libdwarf/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
+install -pDm 0644 libdwarf/.libs/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
 install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
-install -pDm 0755 libdwarf/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
+install -pDm 0755 libdwarf/.libs/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
 ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
 ln -s %{sofullname} %{buildroot}%{_libdir}/libdwarf.so
 install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
