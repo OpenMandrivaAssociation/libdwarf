@@ -1,4 +1,4 @@
-%global major 0
+%global major 1
 %define libname %mklibname dwarf %{major}
 %define devname %mklibname -d dwarf
 %define soversion %{major}
