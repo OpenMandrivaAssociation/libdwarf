@@ -71,7 +71,7 @@ LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
 install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
-install -pDm 0644 libdwarf/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
+install -pDm 0644 libdwarf.libs/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
 install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
 install -pDm 0755 libdwarf/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
 ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
