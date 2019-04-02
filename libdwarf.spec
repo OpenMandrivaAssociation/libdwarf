@@ -66,7 +66,7 @@ to access DWARF debug information.
 %apply_patches
 
 %build
-%configure --enable-shared
+%configure --enable-shared --enable-static
 LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
