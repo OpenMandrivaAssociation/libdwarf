@@ -63,7 +63,7 @@ to access DWARF debug information.
 
 %prep
 %setup -qn %{name}-%{version}
-%apply_patches
+%autopatch -p1
 
 %build
 %configure --enable-shared --enable-static
