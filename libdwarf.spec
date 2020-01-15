@@ -8,7 +8,7 @@
 %define _disable_ld_no_undefined 1
 
 Name:		libdwarf
-Version:	20191104
+Version:	20200114
 Release:	1
 Summary:	Library to access the DWARF Debugging file format
 Group:		Development/C
