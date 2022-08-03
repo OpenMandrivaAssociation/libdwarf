@@ -75,6 +75,7 @@ mkdir %{buildroot}%{_includedir}/libdwarf
 cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdwarf
 
 %files -n %{libname}
+%{_libdir}/libdwarf.so.%{major}
 %{_libdir}/libdwarf.so.%{major}.*
 
 %files static
