@@ -1,4 +1,4 @@
-%global major 1
+%global major 0
 %define libname %mklibname dwarf %{major}
 %define devname %mklibname -d dwarf
 %define soversion %{major}
@@ -8,13 +8,13 @@
 %define _disable_ld_no_undefined 1
 
 Name:		libdwarf
-Version:	20210528
+Version:	0.4.1
 Release:	1
 Summary:	Library to access the DWARF Debugging file format
 Group:		Development/C
 License:	LGPLv2
 URL:		http://www.prevanders.net/dwarf.html
-Source0:	http://www.prevanders.net/%{name}-%{version}.tar.gz
+Source0:	https://www.prevanders.net/libdwarf-%{version}.tar.xz
 BuildRequires:	binutils-devel
 BuildRequires:	elfutils-devel
 
@@ -70,13 +70,9 @@ to access DWARF debug information.
 LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
-install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
-install -pDm 0644 libdwarf/.libs/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
-install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
-install -pDm 0755 libdwarf/.libs/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
-ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
-ln -s %{sofullname} %{buildroot}%{_libdir}/libdwarf.so
-install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
+%make_install
+mkdir %{buildroot}%{_includedir}/libdwarf
+cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdwarf
 
 %files -n %{libname}
 %{_libdir}/libdwarf.so.%{major}
@@ -86,11 +82,12 @@ install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
 %{_libdir}/libdwarf.a
 
 %files -n %{devname}
-%doc libdwarf/*.pdf
-%doc dwarfdump/README dwarfdump/ChangeLog
-%doc dwarfdump/COPYING dwarfdump/DWARFDUMPCOPYRIGHT dwarfdump/GPL.txt
-%{_includedir}/libdwarf
+%{_includedir}/libdwarf-%{major}/
+%{_includedir}/libdwarf/
 %{_libdir}/libdwarf.so
+%{_libdir}/pkgconfig/libdwarf.pc
 
 %files tools
 %{_bindir}/dwarfdump
+%{_datadir}/dwarfdump/dwarfdump.conf
+%{_mandir}/man1/dwarfdump.1.*
