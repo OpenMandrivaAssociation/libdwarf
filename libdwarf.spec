@@ -1,4 +1,4 @@
-%global major 1
+%global major 0
 %define libname %mklibname dwarf %{major}
 %define devname %mklibname -d dwarf
 %define soversion %{major}
@@ -80,8 +80,8 @@ LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 #install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
 
 %files -n %{libname}
-%{_libdir}/libdwarf.so.%{major}
-%{_libdir}/libdwarf.so.%{major}.*
+#{_libdir}/libdwarf.so.%{major}
+#{_libdir}/libdwarf.so.%{major}.*
 
 %files static
 %{_libdir}/libdwarf.a
