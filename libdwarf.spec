@@ -71,27 +71,22 @@ LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
 %make_install
-#install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
-#install -pDm 0644 libdwarf/.libs/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
-#install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
-#install -pDm 0755 libdwarf/.libs/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
-#ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
-#ln -s %{sofullname} %{buildroot}%{_libdir}/libdwarf.so
-#install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
+mkdir %{buildroot}%{_includedir}/libdwarf
+cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdwarf
 
 %files -n %{libname}
-#{_libdir}/libdwarf.so.%{major}
-#{_libdir}/libdwarf.so.%{major}.*
+%{_libdir}/libdwarf.so.%{major}.*
 
 %files static
 %{_libdir}/libdwarf.a
 
 %files -n %{devname}
-#doc libdwarf/*.pdf
-#doc dwarfdump/README dwarfdump/ChangeLog
-#doc dwarfdump/COPYING dwarfdump/DWARFDUMPCOPYRIGHT dwarfdump/GPL.txt
-#{_includedir}/libdwarf
+%{_includedir}/libdwarf-%{major}/
+%{_includedir}/libdwarf/
 %{_libdir}/libdwarf.so
+%{_libdir}/pkgconfig/libdwarf.pc
 
 %files tools
 %{_bindir}/dwarfdump
+%{_datadir}/dwarfdump/dwarfdump.conf
+%{_mandir}/man1/dwarfdump.1.
