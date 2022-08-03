@@ -89,4 +89,4 @@ cp -l %{buildroot}%{_includedir}/libdwarf-0/*.h %{buildroot}%{_includedir}/libdw
 %files tools
 %{_bindir}/dwarfdump
 %{_datadir}/dwarfdump/dwarfdump.conf
-%{_mandir}/man1/dwarfdump.1.
+%{_mandir}/man1/dwarfdump.1.*
