@@ -70,13 +70,14 @@ to access DWARF debug information.
 LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 
 %install
-install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
-install -pDm 0644 libdwarf/.libs/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
-install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
-install -pDm 0755 libdwarf/.libs/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
-ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
-ln -s %{sofullname} %{buildroot}%{_libdir}/libdwarf.so
-install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
+%make_install
+#install -pDm 0644 libdwarf/dwarf.h %{buildroot}%{_includedir}/libdwarf/dwarf.h
+#install -pDm 0644 libdwarf/.libs/libdwarf.a %{buildroot}%{_libdir}/libdwarf.a
+#install -pDm 0644 libdwarf/libdwarf.h %{buildroot}%{_includedir}/libdwarf/libdwarf.h
+#install -pDm 0755 libdwarf/.libs/libdwarf.so %{buildroot}%{_libdir}/%{sofullname}
+#ln -s %{sofullname} %{buildroot}%{_libdir}/%{soname}
+#ln -s %{sofullname} %{buildroot}%{_libdir}/libdwarf.so
+#install -pDm 0755 dwarfdump/dwarfdump %{buildroot}%{_bindir}/dwarfdump
 
 %files -n %{libname}
 %{_libdir}/libdwarf.so.%{major}
