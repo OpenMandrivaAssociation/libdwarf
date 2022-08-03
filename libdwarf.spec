@@ -87,10 +87,10 @@ LD_LIBRARY_PATH="../libdwarf" %make SONAME="%{soname}"
 %{_libdir}/libdwarf.a
 
 %files -n %{devname}
-%doc libdwarf/*.pdf
-%doc dwarfdump/README dwarfdump/ChangeLog
-%doc dwarfdump/COPYING dwarfdump/DWARFDUMPCOPYRIGHT dwarfdump/GPL.txt
-%{_includedir}/libdwarf
+#doc libdwarf/*.pdf
+#doc dwarfdump/README dwarfdump/ChangeLog
+#doc dwarfdump/COPYING dwarfdump/DWARFDUMPCOPYRIGHT dwarfdump/GPL.txt
+#{_includedir}/libdwarf
 %{_libdir}/libdwarf.so
 
 %files tools
