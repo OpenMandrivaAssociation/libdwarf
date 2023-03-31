@@ -9,7 +9,7 @@
 
 Name:		libdwarf
 Version:	0.6.0
-Release:	1
+Release:	2
 Summary:	Library to access the DWARF Debugging file format
 Group:		Development/C
 License:	LGPLv2
