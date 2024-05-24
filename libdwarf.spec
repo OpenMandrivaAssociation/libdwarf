@@ -8,12 +8,12 @@
 %define _disable_ld_no_undefined 1
 
 Name:		libdwarf
-Version:	0.9.1
+Version:	0.9.2
 Release:	1
 Summary:	Library to access the DWARF Debugging file format
 Group:		Development/C
 License:	LGPLv2
-URL:		http://www.prevanders.net/dwarf.html
+URL:		https://www.prevanders.net/dwarf.html
 Source0:	https://www.prevanders.net/libdwarf-%{version}.tar.xz
 BuildRequires:	binutils-devel
 BuildRequires:	elfutils-devel
