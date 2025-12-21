@@ -15,6 +15,11 @@ Group:		Development/C
 License:	LGPLv2
 URL:		https://www.prevanders.net/dwarf.html
 Source0:	https://www.prevanders.net/libdwarf-%{version}.tar.xz
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	binutils-devel
 BuildRequires:	elfutils-devel
 
